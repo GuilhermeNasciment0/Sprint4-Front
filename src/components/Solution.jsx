@@ -1,3 +1,5 @@
+import SectionHeader from './SectionHeader'
+
 const cards = [
   {
     tag: 'DESAFIO ÓPTICO',
@@ -27,23 +29,37 @@ const cards = [
 
 export default function Solution() {
   return (
-    <section id="solucao" className="secao" aria-labelledby="titulo-solucao">
-      <div className="container">
-        <header className="cabecalho-secao">
-          <span className="indice-secao">[ 01. SOLUÇÃO ]</span>
-          <h2 id="titulo-solucao">A Solução Tecnológica</h2>
-          <p>Solucionando as dores de quem tem vontade de crescer aprendendo.</p>
-        </header>
-        <div className="grade-solucoes">
+    <section id="solucao" className="relative py-25" aria-labelledby="titulo-solucao">
+      <div className="mx-auto w-[90%] max-w-[1200px]">
+        <SectionHeader
+          index="[ 01. SOLUÇÃO ]"
+          id="titulo-solucao"
+          title="A Solução Tecnológica"
+          description="Solucionando as dores de quem tem vontade de crescer aprendendo."
+        />
+        <div className="grid auto-rows-[minmax(180px,auto)] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {cards.map((card) => (
-            <article key={card.title} className={`cartao-solucao ${card.wide ? 'cartao-largo' : ''} ${card.highlight ? 'cartao-destaque' : ''}`}>
-              <div className="etiqueta-cartao">{card.tag}</div>
-              <h3>{card.title}</h3>
-              <p>{card.text}</p>
+            <article
+              key={card.title}
+              className={[
+                'relative overflow-hidden rounded-md border border-hud bg-card p-7.5 backdrop-blur-[10px]',
+                'transition-all duration-250 ease-hud',
+                'hover:-translate-y-0.75 hover:border-optics-border hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)]',
+                card.wide ? 'md:col-span-2' : '',
+                card.highlight
+                  ? 'border-l-[3px] border-l-optics bg-[linear-gradient(145deg,rgba(14,25,27,0.8)_0%,rgba(10,15,24,0.9)_100%)] hover:border-l-optics'
+                  : '',
+              ].join(' ')}
+            >
+              <div className="mb-3 font-mono text-[0.72rem] tracking-[1px] text-optics">{card.tag}</div>
+              <h3 className="mb-2.5 text-xl font-bold text-fg">{card.title}</h3>
+              <p className="text-[0.95rem] leading-normal text-muted">{card.text}</p>
               {card.title === 'A Câmera Inteligente' && (
-                <div className="barra-telemetria">
+                <div className="mt-4.5 font-mono text-xs text-muted">
                   <span>Estágio de Desenvolvimento:</span>
-                  <div className="preenchimento-barra preenchimento-vermelho" />
+                  <div className="relative mt-1.5 h-1 w-full overflow-hidden rounded-xs bg-white/10">
+                    <div className="absolute top-0 left-0 h-full w-[82%] bg-danger" />
+                  </div>
                 </div>
               )}
             </article>
