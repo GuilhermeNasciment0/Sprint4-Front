@@ -61,8 +61,8 @@ npm --version
 Clone o repositório e entre na pasta do projeto:
 
 ```bash
-git clone URL-DO-REPOSITORIO
-cd NOME-DA-PASTA-DO-PROJETO
+git clone https://github.com/GuilhermeNasciment0/Sprint4-Front
+cd Sprint4-Front
 ```
 
 Instale as dependências do projeto:
