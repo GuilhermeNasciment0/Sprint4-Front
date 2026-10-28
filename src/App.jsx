@@ -1,39 +1,22 @@
-import { useMemo, useState } from 'react'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import Solution from './components/Solution'
-import Audience from './components/Audience'
-import Gallery from './components/Gallery'
-import Team from './components/Team'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import PrivateRoute from './components/PrivateRoute'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+import NotFound from './pages/NotFound'
 
 export default function App() {
-  const sessionCode = useMemo(
-    () => `JOVI-${Math.floor(1000 + Math.random() * 9000)}`,
-    []
-  )
-
-  const [contactCount, setContactCount] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem('jovistudy_contacts') || '[]').length
-    } catch {
-      return 0
-    }
-  })
-
   return (
-    <>
-      <Header />
-      <main>
-        <Hero sessionCode={sessionCode} />
-        <Solution />
-        <Audience />
-        <Gallery />
-        <Team />
-        <Contact onSent={() => setContactCount((count) => count + 1)} />
-      </main>
-      <Footer contactCount={contactCount} />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="painel" element={<Dashboard />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   )
 }

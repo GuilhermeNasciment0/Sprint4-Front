@@ -1,29 +1,49 @@
-# JoviStudy — Sprint 3
+# JoviStudy — Sprint 4
 
-Landing Page da solução **JoviSmartCam / JoviStudy**, evoluída do protótipo original para **React + Vite**.
+Landing Page da solução **JoviSmartCam / JoviStudy**, evoluída do protótipo original para **React + Vite** e, na Sprint 4, estilizada com **Tailwind CSS** e com rotas públicas e privadas.
 
 ## Acesse a aplicação
 
 Você pode testar a versão publicada diretamente no navegador:
 
-**[Abrir JoviStudy na Vercel](http://sprint3-web-development-bj90ec3gn-a-b09b.vercel.app/)**
+**[Abrir JoviStudy na Vercel](https://sprint4-front-fiap.vercel.app/)**
 
-**[Abrir repositório no github](https://github.com/Fiap-Souga/sprint3---web-development#ia-no-projeto)**
+**[Abrir repositório no github](https://github.com/GuilhermeNasciment0/Sprint4-Front)**
 
 ## Requisitos atendidos
 
 - React com componentes funcionais e estrutura pai → filho.
+- Rotas públicas e privadas com React Router (rota `/painel` protegida por login).
+- Hook customizado `useAuth` e Context API para o controle de autenticação.
 - HTML semântico (`header`, `nav`, `main`, `section`, `article`, `figure`, `form`, `footer`).
-- CSS Grid aplicado às áreas principais.
-- Responsividade para Desktop, Tablet e Mobile.
+- Tailwind CSS (v4) na estilização de todo o projeto, com tokens de cor/tipografia definidos em `src/index.css`.
+- CSS Grid aplicado às áreas principais (utilitários `grid` / `grid-cols-*` do Tailwind).
+- Responsividade para Desktop, Tablet e Mobile (breakpoints `md:` e `lg:` do Tailwind).
 - Imagens e identidade visual do protótipo original preservadas.
 - `localStorage` no formulário para persistir os feedbacks no navegador.
 - `Math.random()` utilizado para gerar um código de sessão da demonstração.
 - Navegação interna pelas seções: Solução, Público-Alvo, Galeria, Equipe e Contato.
+- Deploy na Vercel com Git.
 
 ## Tecnologias
 
-React, JavaScript (JSX), Vite, HTML5, CSS3, CSS Grid e localStorage.
+React, JavaScript (JSX), Vite, Tailwind CSS v4 (`@tailwindcss/vite`), React Router (`react-router-dom`), HTML5, CSS Grid e localStorage.
+
+## Rotas
+
+| Rota | Tipo | Descrição |
+|---|---|---|
+| `/` | Pública | Landing page |
+| `/login` | Pública | Tela de login |
+| `/painel` | Privada | Lista os feedbacks enviados pelo formulário (exige login) |
+| `*` | Pública | Página 404 |
+
+## Usuário e senha para teste
+
+A autenticação é uma simulação feita no front-end (a sessão fica salva no `localStorage`):
+
+- E-mail: `admin@jovistudy.com`
+- Senha: `jovi123`
 
 ## Requisitos para instalação
 
@@ -41,8 +61,8 @@ npm --version
 Clone o repositório e entre na pasta do projeto:
 
 ```bash
-git clone https://github.com/Fiap-Souga/sprint3---web-development.git
-cd JoviStudy-Sprint3-React
+git clone URL-DO-REPOSITORIO
+cd NOME-DA-PASTA-DO-PROJETO
 ```
 
 Instale as dependências do projeto:
@@ -67,11 +87,13 @@ Para interromper o servidor local, pressione `Ctrl + C` no terminal.
 
 Com o servidor em execução, verifique no navegador:
 
-- A navegação entre as seções Solução, Público-Alvo, Galeria, Equipe e Contato.
+- A navegação entre as seções Solução, Público-Alvo, Galeria, Equipe e Contato, inclusive a partir de outras páginas (por exemplo, clicar em "Galeria" estando em `/login`).
 - O comportamento responsivo em desktop, tablet e mobile.
 - A geração do código de sessão exibido na demonstração.
 - O envio do formulário de contato.
 - A persistência dos feedbacks no `localStorage` após atualizar a página.
+- O acesso a `/painel` sem login (deve redirecionar para `/login`) e, após entrar com o usuário de teste, a listagem e a exclusão de feedbacks.
+- O botão **Sair** e a página 404 ao acessar um endereço inexistente.
 - O carregamento das imagens e dos elementos da galeria.
 
 ## Como validar a versão de produção
@@ -92,7 +114,7 @@ Abra o endereço informado pelo Vite, geralmente `http://localhost:4173`, e repi
 
 ## IA no projeto
 
-A IA foi utilizada como apoio ao desenvolvimento e à organização da migração do protótipo para React, auxiliando na estruturação dos componentes, revisão de código e implementação de funcionalidades. A proposta visual e o conteúdo da solução são baseados no projeto da equipe.
+A IA foi utilizada para correção de erros na conversão do CSS tradicional para classes utilitárias do Tailwind CSS e na implementação das rotas públicas e privadas com React Router.
 
 ## Integrantes
 
